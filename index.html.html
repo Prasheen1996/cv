@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prasheen Dehda | Cinematic Showcase</title>
+    
+    <!-- Scripts & Styles -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Product+Sans:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f6eceb; color: #2f3e3e; margin: 0; overflow-x: hidden; }
+        .font-cursive { font-family: 'Caveat', cursive; }
+        .font-google { font-family: 'Product Sans', sans-serif; }
+        
+        @keyframes draw-radar {
+            from { stroke-dasharray: 1000; stroke-dashoffset: 1000; fill-opacity: 0; }
+            to { stroke-dasharray: 1000; stroke-dashoffset: 0; fill-opacity: 0.2; }
+        }
+        .animate-draw-radar { animation: draw-radar 2.5s ease-out forwards; }
+        
+        .fade-in { opacity: 0; transform: translateY(30px); transition: all 1s cubic-bezier(0.22, 1, 0.36, 1); }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 0px; } /* Hide scrollbar for video look */
+
+        @keyframes pulse-tour {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.7; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .tour-pulse { animation: pulse-tour 1.5s infinite; color: #52898a; }
+
+        .cinematic-overlay {
+            pointer-events: none;
+            position: fixed;
+            inset: 0;
+            border: 0px solid #52898a;
+            transition: border-width 0.5s ease;
+            z-index: 99;
+        }
+        .is-touring .cinematic-overlay {
+            border-width: 4px;
+            opacity: 0.2;
+        }
+
+        .typing-cursor::after {
+            content: '|';
+            animation: blink 1s infinite;
+        }
+        @keyframes blink { 50% { opacity: 0; } }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect, useRef, useMemo } = React;
+
+        // --- Lucide Icon Component Wrapper ---
+        const Icon = ({ name, className }) => {
+            const ref = useRef(null);
+            useEffect(() => {
+                if (window.lucide && ref.current) {
+                    const iconKey = Object.keys(window.lucide.icons).find(
+                        key => key.toLowerCase() === name.toLowerCase()
+                    );
+                    if (iconKey) {
+                        ref.current.innerHTML = `<i data-lucide="${iconKey}"></i>`;
+                        window.lucide.createIcons({ root: ref.current });
+                        const svg = ref.current.querySelector('svg');
+                        if (svg && className) {
+                            svg.classList.add(...className.split(' ').filter(Boolean));
+                        }
+                    }
+                }
+            }, [name, className]);
+            return <span ref={ref} className="inline-flex items-center justify-center" />;
+        };
+
+        // --- Data ---
+        const experienceData = [
+            {
+                role: "Head Product Manager - Google Cloud",
+                company: "Liquid Intelligent Technologies",
+                period: "2023 - Present",
+                details: "Architecting a 5-year business plan targeting $100m revenue. Implementing AI solutions for governments based on GCP.",
+                icon: "Cloud"
+            },
+            {
+                role: "Senior Product Manager - Azure",
+                company: "Liquid Intelligent Technologies",
+                period: "2020 - 2022",
+                details: "Scaled Azure services revenue to $4mn ARR. Orchestrated high-value private co-sell offers.",
+                icon: "Server"
+            },
+            {
+                role: "Product Manager - IoT",
+                company: "Liquid Intelligent Technologies",
+                period: "2020",
+                details: "Generated +$1M revenue by delivering 20+ IoT solutions end-to-end.",
+                icon: "Zap"
+            }
+        ];
+
+        // --- Components ---
+        const Reveal = ({ children, className = "" }) => {
+            const ref = useRef(null);
+            useEffect(() => {
+                const observer = new IntersectionObserver(([entry]) => {
+                    if (entry.isIntersecting) entry.target.classList.add('visible');
+                }, { threshold: 0.1 });
+                if (ref.current) observer.observe(ref.current);
+                return () => observer.disconnect();
+            }, []);
+            return <div ref={ref} className={`fade-in ${className}`}>{children}</div>;
+        };
+
+        const RadarChart = () => {
+            const cx = 200; const cy = 200; const r = 140;
+            const angles = [-Math.PI / 2, -Math.PI / 6, Math.PI / 6, Math.PI / 2, 5 * Math.PI / 6, -5 * Math.PI / 6];
+            const scores = [9.5, 9, 9.5, 9, 8.5, 9];
+            const labels = ["Revenue", "Partners", "Advisory", "Leadership", "Strategy", "Execution"];
+            const getPath = (values) => values.map((val, i) => `${cx + (val / 10) * r * Math.cos(angles[i])},${cy + (val / 10) * r * Math.sin(angles[i])}`).join(' ');
+            return (
+                <svg viewBox="0 0 400 400" className="w-full max-w-sm mx-auto drop-shadow-2xl">
+                    {[2, 4, 6, 8, 10].map(v => <polygon key={v} points={getPath(Array(6).fill(v))} fill="none" stroke="#52898a" strokeWidth="0.5" strokeDasharray="4 4" className="opacity-20" />)}
+                    <polygon points={getPath(scores)} fill="#52898a" fillOpacity="0.1" stroke="#52898a" strokeWidth="3" className="animate-draw-radar" />
+                    {labels.map((l, i) => <text key={i} x={cx + (r + 40) * Math.cos(angles[i])} y={cy + (r + 40) * Math.sin(angles[i])} textAnchor="middle" className="text-[12px] font-bold fill-[#52898a] uppercase tracking-wider">{l}</text>)}
+                </svg>
+            );
+        };
+
+        const AIAssistant = ({ title, prompt, iconName, id, autoValue = "" }) => {
+            const [input, setInput] = useState('');
+            const [resp, setResp] = useState('');
+            const [loading, setLoading] = useState(false);
+
+            useEffect(() => {
+                window[`setAI_${id}`] = setInput;
+                window[`submitAI_${id}`] = () => handleAsk();
+            }, [id]);
+
+            const handleAsk = async (textOverride) => {
+                const query = textOverride || input;
+                if (!query.trim()) return;
+                setLoading(true);
+                const apiKey = ""; 
+                try {
+                    const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ 
+                            contents: [{ parts: [{ text: query }] }], 
+                            systemInstruction: { parts: [{ text: prompt }] } 
+                        })
+                    });
+                    const data = await res.json();
+                    setResp(data.candidates?.[0]?.content?.parts?.[0]?.text || "Analysis complete.");
+                } catch (e) { 
+                    setResp("Strategy synthesis complete. (Simulation Mode)"); 
+                }
+                setLoading(false);
+            };
+
+            return (
+                <div id={`ai-section-${id}`} className="bg-white rounded-3xl p-8 shadow-2xl border border-gray-100 mb-8 transition-all hover:shadow-[#52898a]/10">
+                    <div className="flex items-center gap-4 mb-6">
+                        <div className="p-3 bg-[#f6eceb] rounded-xl text-[#52898a]"><Icon name={iconName} className="w-6 h-6" /></div>
+                        <h3 className="text-xl font-bold text-[#52898a] tracking-tight">{title}</h3>
+                    </div>
+                    <textarea 
+                        value={input} 
+                        onChange={e => setInput(e.target.value)} 
+                        placeholder="Paste job description or challenge..." 
+                        className="w-full bg-gray-50 border-none rounded-xl p-4 mb-4 focus:ring-2 focus:ring-[#52898a]/20 outline-none text-sm leading-relaxed min-h-[100px]"
+                    />
+                    <div className="flex gap-4">
+                        <button onClick={() => handleAsk()} disabled={loading || !input.trim()} className="bg-[#52898a] text-white px-8 py-3 rounded-full font-bold hover:scale-105 transition-all disabled:opacity-50 shadow-lg shadow-[#52898a]/20">
+                            {loading ? 'Synthesizing...' : 'Consult Strategy AI'}
+                        </button>
+                    </div>
+                    {resp && <div className="mt-6 p-6 bg-[#f6eceb] rounded-2xl text-sm border-l-8 border-[#52898a] whitespace-pre-wrap animate-in fade-in slide-in-from-top-4 leading-relaxed italic">{resp}</div>}
+                </div>
+            );
+        };
+
+        const PresentationStudio = () => {
+            const [isTouring, setIsTouring] = useState(false);
+            const [countdown, setCountdown] = useState(null);
+
+            const typeMessage = async (id, message) => {
+                let current = "";
+                for (const char of message.split("")) {
+                    current += char;
+                    window[`setAI_${id}`](current);
+                    await new Promise(r => setTimeout(r, 40));
+                }
+                await new Promise(r => setTimeout(r, 500));
+                window[`submitAI_${id}`]();
+            };
+
+            const runCinematicTour = async () => {
+                if (isTouring) return;
+                
+                // Countdown for user to start their own recorder
+                for (let i = 3; i > 0; i--) {
+                    setCountdown(i);
+                    await new Promise(r => setTimeout(r, 1000));
+                }
+                setCountdown(null);
+                setIsTouring(true);
+                
+                // 1. Hero Shot
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                await new Promise(r => setTimeout(r, 3000));
+
+                // 2. Strategic Value
+                document.getElementById('strategic-value').scrollIntoView({ behavior: 'smooth' });
+                await new Promise(r => setTimeout(r, 5000));
+
+                // 3. Experience
+                document.getElementById('experience').scrollIntoView({ behavior: 'smooth' });
+                await new Promise(r => setTimeout(r, 6000));
+
+                // 4. AI Interaction Simulation
+                document.getElementById('ai-section-recruiter').scrollIntoView({ behavior: 'smooth' });
+                await new Promise(r => setTimeout(r, 1500));
+                await typeMessage('recruiter', "Looking for a Cloud Leader with MEDDPICC expertise and GCP architecture skills.");
+                await new Promise(r => setTimeout(r, 5000));
+
+                // 5. Final Outro
+                window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+                await new Promise(r => setTimeout(r, 4000));
+
+                setIsTouring(false);
+            };
+
+            return (
+                <>
+                <div className={`cinematic-overlay ${isTouring ? 'is-touring' : ''}`} />
+                
+                {countdown && (
+                    <div className="fixed inset-0 z-[200] flex items-center justify-center bg-black/40 backdrop-blur-sm">
+                        <div className="text-white text-[12rem] font-black animate-ping">{countdown}</div>
+                    </div>
+                )}
+
+                <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-[100] flex items-center gap-3 bg-[#2f3e3e]/95 backdrop-blur-2xl text-white p-2.5 rounded-full shadow-2xl border border-white/20">
+                    <div className="flex flex-col px-6 border-r border-white/10 mr-1">
+                        <div className="flex items-center gap-2">
+                            <div className={`w-2 h-2 rounded-full ${isTouring ? 'bg-[#52898a] tour-pulse' : 'bg-gray-600'}`} />
+                            <span className="text-[10px] font-black tracking-[0.2em] uppercase opacity-70">Cinematic Tour</span>
+                        </div>
+                        <span className="text-[8px] opacity-40 uppercase tracking-tighter">Use Loom/OBS to record</span>
+                    </div>
+                    
+                    <button 
+                        onClick={runCinematicTour}
+                        disabled={isTouring}
+                        className={`flex items-center gap-3 px-8 py-3 rounded-full text-xs font-bold transition-all ${isTouring ? 'bg-[#52898a] opacity-50' : 'bg-[#52898a] hover:bg-[#3f6d6e] shadow-lg shadow-[#52898a]/20 hover:scale-105'}`}
+                    >
+                        <Icon name="Play" className="w-4 h-4" />
+                        {isTouring ? 'Director Mode Active...' : 'Start Auto-Showcase'}
+                    </button>
+                </div>
+                </>
+            );
+        };
+
+        const App = () => {
+            return (
+                <div className="min-h-screen">
+                    <PresentationStudio />
+                    
+                    <nav className="fixed top-0 w-full bg-white/70 backdrop-blur-xl z-50 border-b border-gray-100 px-8 py-5 flex justify-between items-center">
+                        <div className="font-bold text-[#52898a] tracking-widest text-sm uppercase">Prasheen Dehda <span className="opacity-30 mx-2">|</span> Product Leader</div>
+                        <a href="mailto:prasheen.dehda01@gmail.com" className="bg-[#2f3e3e] text-white px-6 py-2 rounded-full text-[10px] font-black tracking-widest hover:bg-black transition-all">CONNECT</a>
+                    </nav>
+
+                    <section className="pt-48 pb-32 px-6 text-center max-w-5xl mx-auto">
+                        <Reveal>
+                            <h1 className="font-cursive text-8xl md:text-[11rem] text-[#52898a] mb-8 leading-none">Prasheen Dehda</h1>
+                            <p className="text-xl md:text-2xl text-gray-400 mb-12 max-w-2xl mx-auto leading-relaxed font-light">
+                                Architecting the nexus of <span className="text-[#52898a] font-bold">Cloud Scale</span>, <span className="text-[#52898a] font-bold">AI Strategy</span>, and high-performance culture.
+                            </p>
+                            <div className="w-px h-24 bg-gradient-to-b from-[#52898a] to-transparent mx-auto opacity-30"></div>
+                        </Reveal>
+                    </section>
+
+                    <section id="strategic-value" className="py-32 bg-white px-6">
+                        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-20 items-center">
+                            <Reveal>
+                                <h2 className="font-cursive text-6xl text-[#52898a] mb-8">Strategic Impact</h2>
+                                <p className="text-gray-500 text-lg mb-10 leading-relaxed italic">
+                                    "Diversity is being invited to the party; inclusion is being asked to dance."
+                                </p>
+                                <div className="grid grid-cols-1 gap-6">
+                                    {[
+                                        {t: 'Revenue Engineering', d: 'Consistent $100M+ enterprise pipeline growth.'},
+                                        {t: 'Technical Advisory', d: 'Bridging C-suite vision with multi-cloud architecture.'},
+                                        {t: 'Scale Partnerships', d: 'Strategic co-sell leadership with GCP and Azure.'}
+                                    ].map(item => (
+                                        <div key={item.t} className="flex gap-4 items-start group">
+                                            <div className="mt-1"><Icon name="CheckCircle" className="w-5 h-5 text-[#52898a]" /></div>
+                                            <div>
+                                                <div className="font-bold text-[#2f3e3e] group-hover:text-[#52898a] transition-colors">{item.t}</div>
+                                                <div className="text-sm text-gray-400">{item.d}</div>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </Reveal>
+                            <Reveal><RadarChart /></Reveal>
+                        </div>
+                    </section>
+
+                    <section id="experience" className="py-32 px-6 max-w-7xl mx-auto">
+                        <h2 className="font-cursive text-6xl text-[#52898a] text-center mb-20">Career Trajectory</h2>
+                        <div className="grid md:grid-cols-3 gap-10">
+                            {experienceData.map((job, i) => (
+                                <Reveal key={i} className="bg-white p-10 rounded-[2.5rem] shadow-xl border border-gray-50 hover:-translate-y-4 transition-all duration-500 group">
+                                    <div className="w-16 h-16 bg-[#f6eceb] rounded-2xl flex items-center justify-center text-[#52898a] mb-8 group-hover:bg-[#52898a] group-hover:text-white transition-all">
+                                        <Icon name={job.icon} className="w-8 h-8" />
+                                    </div>
+                                    <h3 className="font-bold text-xl mb-2 text-[#2f3e3e]">{job.role}</h3>
+                                    <p className="text-[#52898a] font-black text-xs tracking-widest mb-6 uppercase">{job.company}</p>
+                                    <p className="text-sm text-gray-500 leading-relaxed font-light">{job.details}</p>
+                                </Reveal>
+                            ))}
+                        </div>
+                    </section>
+
+                    <section className="py-32 px-6 bg-gray-50/50">
+                        <div className="max-w-4xl mx-auto">
+                            <h2 className="font-cursive text-6xl text-[#52898a] text-center mb-20">Interactive Studio</h2>
+                            <AIAssistant 
+                                id="recruiter"
+                                title="Recruiter Fit Engine" 
+                                iconName="Target"
+                                prompt="You are Prasheen Dehda's Strategic AI. Explain how Prasheen's background in Cloud PM, MEDDPICC, and Google/Microsoft ecosystems creates massive ROI for the following job profile." 
+                            />
+                            <AIAssistant 
+                                id="roadmap"
+                                title="Cloud Strategy Lab" 
+                                iconName="Zap"
+                                prompt="Provide a rapid 3-step technical roadmap for cloud migration or AI integration based on the user's business challenge." 
+                            />
+                        </div>
+                    </section>
+
+                    <footer className="bg-[#2f3e3e] text-white py-32 px-6 text-center">
+                        <Reveal>
+                            <h2 className="font-cursive text-7xl mb-12">Let's build the future.</h2>
+                            <div className="flex justify-center gap-10 mb-16">
+                                <a href="mailto:prasheen.dehda01@gmail.com" className="hover:scale-125 transition-all text-white p-4 border border-white/10 rounded-full"><Icon name="Mail" className="w-8 h-8" /></a>
+                                <a href="#" className="hover:scale-125 transition-all text-white p-4 border border-white/10 rounded-full"><Icon name="Linkedin" className="w-8 h-8" /></a>
+                            </div>
+                            <p className="text-[10px] uppercase tracking-[0.4em] opacity-30">Prasheen Dehda © {new Date().getFullYear()}</p>
+                        </Reveal>
+                    </footer>
+                </div>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
