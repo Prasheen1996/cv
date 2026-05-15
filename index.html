@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prasheen Dehda - Portfolio</title>
+    <meta name="description" content="Portfolio of Prasheen Dehda, a results-driven Cloud & AI Solution Sales Leader guiding corporate customers through their Cloud and AI journeys.">
+    <meta name="theme-color" content="#52898a">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Custom Fonts & Styles -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&display=swap');
+        
+        .font-cursive { font-family: 'Caveat', cursive; }
+        .font-calibri { font-family: 'Calibri', 'Segoe UI', sans-serif; }
+        .font-google-sans-medium { font-family: 'Google Sans', 'Product Sans', 'Segoe UI', sans-serif; font-weight: 500; }
+        
+        html { scroll-behavior: smooth; }
+
+        /* Custom SVG Radar Animation */
+        @keyframes draw-polygon {
+            0% { stroke-dasharray: 2000; stroke-dashoffset: 2000; fill-opacity: 0; }
+            100% { stroke-dasharray: 2000; stroke-dashoffset: 0; fill-opacity: 0.25; }
+        }
+        .animate-radar {
+            animation: draw-polygon 2.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+            animation-delay: 0.5s;
+            fill-opacity: 0;
+        }
+
+        /* Floating Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(var(--tw-rotate, 0deg)); }
+            50% { transform: translateY(-15px) rotate(var(--tw-rotate, 0deg)); }
+        }
+        .animate-float { animation: float 6s ease-in-out infinite; }
+        .animate-float-delayed { animation: float 7s ease-in-out infinite; animation-delay: 2s; }
+
+        /* Scroll Reveal Base Classes */
+        .reveal-elem {
+            opacity: 0;
+            transform: translateY(3rem);
+            transition: all 1s ease-out;
+        }
+        .reveal-elem.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-[#f6eceb] min-h-screen text-[#2f3e3e] selection:bg-[#52898a] selection:text-white font-calibri overflow-x-hidden">
+
+    <!-- HEADER -->
+    <nav class="bg-[#52898a] text-white py-4 px-6 md:px-12 flex justify-between items-center font-calibri font-bold sticky top-0 z-50 shadow-md">
+        <div class="flex flex-col cursor-pointer group" onclick="window.scrollTo(0,0)">
+            <span class="text-sm tracking-wide group-hover:tracking-widest transition-all duration-300">Prasheen</span>
+            <span class="text-xs opacity-80 group-hover:opacity-100 transition-opacity">Dehda</span>
+        </div>
+        <div class="hidden lg:flex gap-8 text-[15px]">
+            <a href="#about" class="relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-teal-200 after:transition-all after:duration-300 hover:after:w-full hover:text-teal-200 transition-colors pb-1">About me</a>
+            <a href="#value-proposition" class="relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-teal-200 after:transition-all after:duration-300 hover:after:w-full hover:text-teal-200 transition-colors pb-1">Value Proposition</a>
+            <a href="#experience" class="relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-teal-200 after:transition-all after:duration-300 hover:after:w-full hover:text-teal-200 transition-colors pb-1">Experience</a>
+            <a href="#education" class="relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-teal-200 after:transition-all after:duration-300 hover:after:w-full hover:text-teal-200 transition-colors pb-1">Education & Certifications</a>
+            <a href="#recommendations" class="relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-teal-200 after:transition-all after:duration-300 hover:after:w-full hover:text-teal-200 transition-colors pb-1">Recommendations</a>
+        </div>
+        <div class="lg:hidden">
+            <i data-lucide="menu" class="w-6 h-6 cursor-pointer"></i>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="relative min-h-[85vh] flex flex-col items-center justify-center px-6 py-20 overflow-hidden bg-[#f6eceb]">
+        
+        <!-- Left Image (CAF Speaking) -->
+        <div class="absolute left-[-2rem] md:left-[5%] lg:left-[10%] top-[15%] w-48 md:w-72 hidden sm:block z-10 animate-float" style="--tw-rotate: -6deg;">
+            <div class="group bg-white p-3 pb-10 shadow-lg hover:shadow-[0_20px_50px_rgba(82,137,138,0.15)] transition-all duration-500 border border-gray-100 rounded-sm relative z-0 hover:z-10 cursor-default">
+                <div class="h-48 md:h-72 overflow-hidden bg-gray-100 relative group-hover:scale-105 transition-transform duration-500">
+                    <img src="image_d01cdb.jpg" alt="Speaking at Cyber Africa Forum" class="w-full h-full object-cover object-top" onerror="this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=800';" />
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Image (Google Cloud Launch) -->
+        <div class="absolute right-[-2rem] md:right-[5%] lg:right-[10%] bottom-[10%] w-48 md:w-80 hidden sm:block z-10 animate-float-delayed" style="--tw-rotate: 6deg;">
+            <div class="group bg-white p-3 pb-10 shadow-lg hover:shadow-[0_20px_50px_rgba(82,137,138,0.15)] transition-all duration-500 border border-gray-100 rounded-sm relative z-0 hover:z-10 cursor-default">
+                <div class="h-48 md:h-64 overflow-hidden bg-gray-100 relative group-hover:scale-105 transition-transform duration-500">
+                    <img src="Google cloud region launch event.jpg" alt="Google Cloud Region Launch Event" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1475721025870-2460665d9118?auto=format&fit=crop&q=80&w=800';" />
+                </div>
+            </div>
+        </div>
+
+        <div class="reveal-elem text-center relative z-20 max-w-2xl mx-auto flex flex-col items-center">
+            <h1 class="font-cursive text-7xl md:text-8xl lg:text-9xl text-[#52898a] mb-6 drop-shadow-sm leading-tight px-4 hover:scale-[1.02] transition-transform duration-500 cursor-default">
+                Prasheen Dehda
+            </h1>
+            <p class="font-calibri text-[#2f3e3e] text-lg md:text-xl leading-relaxed px-4 max-w-lg">
+                Helping organizations prosper in the digital era through Cloud & AI transformation, guided by inclusive leadership.
+            </p>
+        </div>
+    </section>
+
+    <!-- ABOUT ME & STORY (Summarized & Visualized) -->
+    <section id="about" class="py-24 px-6 md:px-12 bg-white text-center">
+        <div class="reveal-elem max-w-5xl mx-auto">
+            <i data-lucide="sparkles" class="w-10 h-10 text-[#52898a] mx-auto mb-6 opacity-60"></i>
+            <h2 class="font-google-sans-medium text-3xl md:text-4xl text-[#52898a] leading-tight mb-8 drop-shadow-sm">
+                Sparking ‘Aha’ Moments in the Cloud
+            </h2>
+            
+            <p class="font-cursive text-3xl text-[#506060] italic mb-12 max-w-2xl mx-auto">
+                "It’s not about the titles, but the souls you touch. Not the destination, but the journey."
+            </p>
+
+            <div class="text-left font-calibri text-lg text-[#506060] leading-relaxed max-w-3xl mx-auto mb-16 space-y-4">
+                <p>
+                    I focus on solving deep business problems, not just selling products. My goal is to understand your unique challenges and deliver real value through strategic <span class="font-bold text-[#52898a]">"aha" moments</span>. Beyond my corporate titles, my true mission is to pay it forward—opening doors for the next generation of young talent just as my mentors did for me in 2020.
+                </p>
+            </div>
+
+            <!-- The Visual Journey Grid -->
+            <div class="grid md:grid-cols-3 gap-8 mb-16 text-left">
+                <!-- Milestone 1 -->
+                <div class="bg-gray-50 border border-gray-100 rounded-[2rem] p-8 hover:-translate-y-2 hover:shadow-xl transition-all duration-300">
+                    <div class="w-12 h-12 bg-[#f6eceb] text-[#52898a] rounded-full flex items-center justify-center mb-6">
+                        <i data-lucide="lightbulb" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-google-sans-medium text-xl text-[#2f3e3e] font-bold mb-3">The Spark</h3>
+                    <p class="font-calibri text-[#506060] text-[15px] leading-relaxed">
+                        My journey began in 2019 using Azure IoT to solve a very real agricultural problem: tracking livestock to prevent financial loss. That success commercialized into a smart IoT solution and launched my career in tech-driven products.
+                    </p>
+                </div>
+                <!-- Milestone 2 -->
+                <div class="bg-gray-50 border border-gray-100 rounded-[2rem] p-8 hover:-translate-y-2 hover:shadow-xl transition-all duration-300">
+                    <div class="w-12 h-12 bg-[#f6eceb] text-[#52898a] rounded-full flex items-center justify-center mb-6">
+                        <i data-lucide="trending-up" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-google-sans-medium text-xl text-[#2f3e3e] font-bold mb-3">The Scale</h3>
+                    <p class="font-calibri text-[#506060] text-[15px] leading-relaxed">
+                        Transitioning to Microsoft Managed Services, I had the privilege of leading the practice from the ground up—scaling revenue from <span class="font-bold text-[#52898a]">$0 to $50M annually</span> with robust margins exceeding 40%.
+                    </p>
+                </div>
+                <!-- Milestone 3 -->
+                <div class="bg-gray-50 border border-gray-100 rounded-[2rem] p-8 hover:-translate-y-2 hover:shadow-xl transition-all duration-300">
+                    <div class="w-12 h-12 bg-[#f6eceb] text-[#52898a] rounded-full flex items-center justify-center mb-6">
+                        <i data-lucide="globe" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-google-sans-medium text-xl text-[#2f3e3e] font-bold mb-3">The Ecosystem</h3>
+                    <p class="font-calibri text-[#506060] text-[15px] leading-relaxed">
+                        Today, I head the product division for Google Cloud. Across both platforms, I've helped shape a combined <span class="font-bold text-[#52898a]">$130M business</span> operating across 26 countries by constantly building net-new revenue streams.
+                    </p>
+                </div>
+            </div>
+
+            <!-- The Core Formula -->
+            <div class="bg-[#f6eceb] p-8 md:p-10 rounded-[2rem] border border-gray-100 max-w-4xl mx-auto shadow-sm text-left">
+                <p class="font-google-sans-medium text-[#52898a] text-xl font-bold mb-6 text-center">The consistent pattern to this growth:</p>
+                <ul class="space-y-4 font-calibri font-bold text-[#2f3e3e] text-lg max-w-2xl mx-auto">
+                    <li class="flex items-center gap-4"><i data-lucide="check-circle" class="w-6 h-6 text-[#52898a] shrink-0"></i> Start with a real customer problem</li>
+                    <li class="flex items-center gap-4"><i data-lucide="check-circle" class="w-6 h-6 text-[#52898a] shrink-0"></i> Stay obsessively focused on solving it</li>
+                    <li class="flex items-center gap-4"><i data-lucide="check-circle" class="w-6 h-6 text-[#52898a] shrink-0"></i> Combine that with a mindset of continuous learning and evolution</li>
+                </ul>
+                <p class="mt-8 italic text-center font-calibri text-[#506060] text-lg">
+                    That intersection—customer obsession and constant growth—is where I’ve found my passion.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- VALUE PROPOSITION -->
+    <section id="value-proposition" class="py-24 bg-[#f6eceb] px-6 overflow-hidden relative group/section">
+        <div class="max-w-7xl mx-auto">
+            <div class="reveal-elem">
+                <h2 class="font-cursive text-6xl text-[#52898a] mb-16 text-center drop-shadow-sm hover:scale-105 transition-transform duration-500 cursor-default">
+                    Value Proposition
+                </h2>
+            </div>
+            
+            <div class="flex flex-col xl:flex-row items-center justify-between gap-16 xl:gap-8">
+                
+                <!-- RADAR CHART -->
+                <div class="reveal-elem w-full xl:w-1/2 flex justify-center relative" style="transition-delay: 200ms;">
+                    <div class="relative w-[360px] h-[360px] sm:w-[450px] sm:h-[450px] group/radar cursor-pointer hover:scale-105 transition-transform duration-500">
+                        <svg id="radar-svg" viewBox="0 0 400 400" class="w-full h-full overflow-visible drop-shadow-md group-hover/radar:drop-shadow-2xl transition-all duration-500">
+                            <!-- SVG content will be injected by JavaScript to avoid messy hardcoding -->
+                        </svg>
+                    </div>
+                    
+                    <div class="absolute top-1/2 right-[-2rem] translate-x-1/2 -translate-y-1/2 hidden xl:flex items-center text-[#52898a] opacity-60 group-hover/section:opacity-100 group-hover/section:translate-x-6 transition-all duration-500">
+                        <i data-lucide="arrow-right" class="w-14 h-14 animate-pulse"></i>
+                    </div>
+                </div>
+
+                <!-- VENN DIAGRAM -->
+                <div class="reveal-elem w-full xl:w-1/2 flex justify-center" style="transition-delay: 400ms;">
+                    <div class="relative w-[340px] h-[340px] sm:w-[480px] sm:h-[480px] font-calibri">
+                        
+                        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-52 h-52 sm:w-72 sm:h-72 rounded-full bg-[#6ab3b5] mix-blend-multiply flex flex-col items-center justify-start pt-8 sm:pt-12 px-6 text-white text-center hover:scale-110 hover:z-50 hover:shadow-2xl hover:mix-blend-normal cursor-pointer transition-all duration-500 shadow-xl z-10 group">
+                            <h4 class="font-calibri font-bold text-[22px] sm:text-3xl mb-2 sm:mb-4 leading-tight drop-shadow-md group-hover:scale-110 transition-transform">Technical<br/>credibility</h4>
+                            <p class="text-[11px] sm:text-[13px] font-semibold mb-1 opacity-90">Masters in Engineering</p>
+                            <p class="text-[11px] sm:text-[13px] font-semibold mb-1 opacity-90">Technical certifications</p>
+                            <p class="text-[11px] sm:text-[13px] font-semibold opacity-90">Solution Implementation</p>
+                        </div>
+
+                        <div class="absolute bottom-0 left-0 w-52 h-52 sm:w-72 sm:h-72 rounded-full bg-[#3f8c8e] mix-blend-multiply flex flex-col items-center justify-end pb-12 sm:pb-16 pl-6 sm:pl-10 pr-6 text-white text-center hover:scale-110 hover:z-50 hover:shadow-2xl hover:mix-blend-normal cursor-pointer transition-all duration-500 shadow-xl z-20 group">
+                            <p class="text-[11px] sm:text-[13px] font-semibold mb-1 opacity-90">Strategic Account execution</p>
+                            <p class="text-[11px] sm:text-[13px] font-semibold mb-1 opacity-90">High Impact revenue</p>
+                            <p class="text-[11px] sm:text-[13px] font-semibold mb-3 sm:mb-5 opacity-90">Sales Methodology (MEDDPICC)</p>
+                            <h4 class="font-calibri font-bold text-[22px] sm:text-3xl leading-tight drop-shadow-md group-hover:scale-110 transition-transform">Commercial<br/>Acumen</h4>
+                        </div>
+
+                        <div class="absolute bottom-0 right-0 w-52 h-52 sm:w-72 sm:h-72 rounded-full bg-[#57a6a8] mix-blend-multiply flex flex-col items-center justify-end pb-12 sm:pb-16 pr-6 sm:pr-10 pl-6 text-white text-center hover:scale-110 hover:z-50 hover:shadow-2xl hover:mix-blend-normal cursor-pointer transition-all duration-500 shadow-xl z-30 group">
+                            <p class="text-[11px] sm:text-[13px] font-semibold mb-1 opacity-90">Mentoring & Development</p>
+                            <p class="text-[11px] sm:text-[13px] font-semibold mb-1 opacity-90">Thought leader</p>
+                            <p class="text-[11px] sm:text-[13px] font-semibold mb-3 sm:mb-5 opacity-90">Think2Thrive course facilitator</p>
+                            <h4 class="font-calibri font-bold text-[22px] sm:text-3xl leading-tight drop-shadow-md group-hover:scale-110 transition-transform">Leadership</h4>
+                        </div>
+
+                        <div class="absolute top-[52%] left-1/2 -translate-x-1/2 -translate-y-1/2 text-white text-center z-40 pointer-events-none drop-shadow-xl hover:scale-110 transition-transform duration-500">
+                            <h3 class="font-google-sans-medium text-[26px] sm:text-[38px] font-bold leading-[1.1] tracking-wide">
+                                TRUSTED<br/>ADVISOR
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="reveal-elem mt-20 sm:mt-32 text-center" style="transition-delay: 600ms;">
+                <h3 class="font-calibri text-2xl font-bold text-[#2f3e3e] mb-6">Roles of Interest</h3>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <span class="bg-white border-2 border-[#52898a] text-[#52898a] px-6 py-2.5 rounded-full font-calibri font-bold text-[15px] shadow-sm hover:bg-[#52898a] hover:text-white hover:scale-105 hover:shadow-md transition-all cursor-pointer active:scale-95">Cloud & AI solution specialist</span>
+                    <span class="bg-white border-2 border-[#52898a] text-[#52898a] px-6 py-2.5 rounded-full font-calibri font-bold text-[15px] shadow-sm hover:bg-[#52898a] hover:text-white hover:scale-105 hover:shadow-md transition-all cursor-pointer active:scale-95">Strategic Cloud advisor</span>
+                    <span class="bg-white border-2 border-[#52898a] text-[#52898a] px-6 py-2.5 rounded-full font-calibri font-bold text-[15px] shadow-sm hover:bg-[#52898a] hover:text-white hover:scale-105 hover:shadow-md transition-all cursor-pointer active:scale-95">Partner Success Manager</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="py-24 px-6 md:px-12 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <div class="reveal-elem">
+                <h2 class="font-cursive text-6xl md:text-7xl text-[#52898a] text-center mb-16 drop-shadow-sm hover:scale-105 transition-transform cursor-default">Work Experience</h2>
+            </div>
+            <div class="grid md:grid-cols-3 gap-10">
+                <!-- Job 1 -->
+                <div class="reveal-elem" style="transition-delay: 0ms;">
+                    <div class="group bg-[#f6eceb] p-6 pb-12 shadow-lg hover:shadow-[0_20px_50px_rgba(82,137,138,0.15)] transition-all duration-500 transform rotate-1 hover:rotate-0 hover:scale-[1.03] hover:-translate-y-3 border border-gray-100 rounded-xl relative z-0 hover:z-10 cursor-default flex flex-col h-full group/job hover:!border-[#52898a]/30">
+                        <div class="bg-white p-4 rounded-full inline-flex mb-6 w-fit shadow-inner group-hover/job:bg-[#52898a] group-hover/job:scale-110 group-hover/job:shadow-lg transition-all duration-300">
+                            <i data-lucide="cloud" class="w-8 h-8 text-[#52898a] group-hover/job:text-white transition-colors duration-300"></i>
+                        </div>
+                        <h3 class="font-calibri text-2xl font-bold text-[#2f3e3e] mb-2 leading-tight group-hover/job:text-[#52898a] transition-colors">Head Product Manager - Google Cloud & Services</h3>
+                        <p class="font-calibri font-bold text-[#52898a] text-lg mb-4 group-hover/job:translate-x-1 transition-transform">Liquid Intelligent Technologies</p>
+                        <div class="bg-white px-4 py-1.5 rounded-full text-sm font-calibri font-bold text-gray-500 w-fit mb-6 border border-gray-200 group-hover/job:bg-[#52898a] group-hover/job:text-white transition-colors duration-300">Jan 2023 - Present</div>
+                        <p class="font-calibri text-[#506060] text-[15px] leading-relaxed mt-auto">Architected a 5 year business plan to execute $100m. Defined product market fit across key territories. Implemented solutions for governments based on Google Cloud's data and AI services. Support a team of 3 direct reports.</p>
+                    </div>
+                </div>
+
+                <!-- Job 2 -->
+                <div class="reveal-elem" style="transition-delay: 150ms;">
+                    <div class="group bg-[#f6eceb] p-6 pb-12 shadow-lg hover:shadow-[0_20px_50px_rgba(82,137,138,0.15)] transition-all duration-500 transform -rotate-2 hover:rotate-0 hover:scale-[1.03] hover:-translate-y-3 border border-gray-100 rounded-xl relative z-0 hover:z-10 cursor-default flex flex-col h-full group/job hover:!border-[#52898a]/30">
+                        <div class="bg-white p-4 rounded-full inline-flex mb-6 w-fit shadow-inner group-hover/job:bg-[#52898a] group-hover/job:scale-110 group-hover/job:shadow-lg transition-all duration-300">
+                            <i data-lucide="server" class="w-8 h-8 text-[#52898a] group-hover/job:text-white transition-colors duration-300"></i>
+                        </div>
+                        <h3 class="font-calibri text-2xl font-bold text-[#2f3e3e] mb-2 leading-tight group-hover/job:text-[#52898a] transition-colors">Senior Product Manager - Microsoft Managed Services</h3>
+                        <p class="font-calibri font-bold text-[#52898a] text-lg mb-4 group-hover/job:translate-x-1 transition-transform">Liquid Intelligent Technologies</p>
+                        <div class="bg-white px-4 py-1.5 rounded-full text-sm font-calibri font-bold text-gray-500 w-fit mb-6 border border-gray-200 group-hover/job:bg-[#52898a] group-hover/job:text-white transition-colors duration-300">Dec 2020 - Dec 2022</div>
+                        <p class="font-calibri text-[#506060] text-[15px] leading-relaxed mt-auto">Grew Azure services revenue from $0 to $4mn ARR using MEDDPICC. Orchestrated 6 private co-sell Azure marketplace offers with +$0.5m revenue. Achieved Microsoft Teams & Networking Advance specialisation.</p>
+                    </div>
+                </div>
+
+                <!-- Job 3 -->
+                <div class="reveal-elem" style="transition-delay: 300ms;">
+                    <div class="group bg-[#f6eceb] p-6 pb-12 shadow-lg hover:shadow-[0_20px_50px_rgba(82,137,138,0.15)] transition-all duration-500 transform rotate-1 hover:rotate-0 hover:scale-[1.03] hover:-translate-y-3 border border-gray-100 rounded-xl relative z-0 hover:z-10 cursor-default flex flex-col h-full group/job hover:!border-[#52898a]/30">
+                        <div class="bg-white p-4 rounded-full inline-flex mb-6 w-fit shadow-inner group-hover/job:bg-[#52898a] group-hover/job:scale-110 group-hover/job:shadow-lg transition-all duration-300">
+                            <i data-lucide="lightbulb" class="w-8 h-8 text-[#52898a] group-hover/job:text-white transition-colors duration-300"></i>
+                        </div>
+                        <h3 class="font-calibri text-2xl font-bold text-[#2f3e3e] mb-2 leading-tight group-hover/job:text-[#52898a] transition-colors">Product Manager - IoT</h3>
+                        <p class="font-calibri font-bold text-[#52898a] text-lg mb-4 group-hover/job:translate-x-1 transition-transform">Liquid Intelligent Technologies</p>
+                        <div class="bg-white px-4 py-1.5 rounded-full text-sm font-calibri font-bold text-gray-500 w-fit mb-6 border border-gray-200 group-hover/job:bg-[#52898a] group-hover/job:text-white transition-colors duration-300">Jan 2020 - Nov 2020</div>
+                        <p class="font-calibri text-[#506060] text-[15px] leading-relaxed mt-auto">Generated +$1 million in revenue selling and delivering 20+ IoT solutions to enterprise customers. Led the technical implementation of IoT solutions (Hardware & Software).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EDUCATION & CERTIFICATIONS -->
+    <section id="education" class="py-24 px-6 md:px-12 bg-[#f6eceb]">
+        <div class="max-w-6xl mx-auto">
+            <div class="reveal-elem">
+                <h2 class="font-cursive text-6xl md:text-7xl text-[#52898a] text-center mb-16 drop-shadow-sm hover:scale-105 transition-transform cursor-default">Education</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-10 mb-20">
+                <!-- Edu 1 -->
+                <div class="reveal-elem" style="transition-delay: 0ms;">
+                    <div class="group bg-white p-6 pb-10 shadow-lg hover:shadow-[0_20px_50px_rgba(82,137,138,0.15)] transition-all duration-500 transform -rotate-1 hover:rotate-0 hover:scale-[1.03] hover:-translate-y-3 border border-gray-100 rounded-sm relative z-0 hover:z-10 cursor-default flex flex-col h-full group/edu">
+                        <h3 class="font-calibri text-xl font-bold text-[#2f3e3e] mb-3 leading-tight group-hover/edu:text-[#52898a] transition-colors">WBS Global Online MBA</h3>
+                        <p class="font-calibri font-bold text-[#52898a] mb-4 group-hover/edu:translate-x-1 transition-transform">Warwick Business School</p>
+                        <div class="bg-gray-50 border border-gray-200 px-3 py-1 rounded-full text-xs font-calibri font-bold text-gray-500 w-fit mb-4 group-hover/edu:bg-[#52898a] group-hover/edu:text-white group-hover/edu:border-[#52898a] transition-colors duration-300">Planned (2025-2028)</div>
+                    </div>
+                </div>
+                <!-- Edu 2 -->
+                <div class="reveal-elem" style="transition-delay: 150ms;">
+                    <div class="group bg-white p-6 pb-10 shadow-lg hover:shadow-[0_20px_50px_rgba(82,137,138,0.15)] transition-all duration-500 transform rotate-2 hover:rotate-0 hover:scale-[1.03] hover:-translate-y-3 border border-gray-100 rounded-sm relative z-0 hover:z-10 cursor-default flex flex-col h-full group/edu">
+                        <h3 class="font-calibri text-xl font-bold text-[#2f3e3e] mb-3 leading-tight group-hover/edu:text-[#52898a] transition-colors">Masters in Engineering (First Class)</h3>
+                        <p class="font-calibri font-bold text-[#52898a] mb-4 group-hover/edu:translate-x-1 transition-transform">University of Johannesburg</p>
+                        <div class="bg-gray-50 border border-gray-200 px-3 py-1 rounded-full text-xs font-calibri font-bold text-gray-500 w-fit mb-4 group-hover/edu:bg-[#52898a] group-hover/edu:text-white group-hover/edu:border-[#52898a] transition-colors duration-300">Dec 2018 - Dec 2019</div>
+                        <p class="font-calibri text-[#506060] text-[15px] leading-relaxed mt-auto">Low Power Wide Area Network IoT fire detection system for informal settlements.</p>
+                    </div>
+                </div>
+                <!-- Edu 3 -->
+                <div class="reveal-elem" style="transition-delay: 300ms;">
+                    <div class="group bg-white p-6 pb-10 shadow-lg hover:shadow-[0_20px_50px_rgba(82,137,138,0.15)] transition-all duration-500 transform -rotate-1 hover:rotate-0 hover:scale-[1.03] hover:-translate-y-3 border border-gray-100 rounded-sm relative z-0 hover:z-10 cursor-default flex flex-col h-full group/edu">
+                        <h3 class="font-calibri text-xl font-bold text-[#2f3e3e] mb-3 leading-tight group-hover/edu:text-[#52898a] transition-colors">Bachelor of Engineering (First class)</h3>
+                        <p class="font-calibri font-bold text-[#52898a] mb-4 group-hover/edu:translate-x-1 transition-transform">University of Johannesburg</p>
+                        <div class="bg-gray-50 border border-gray-200 px-3 py-1 rounded-full text-xs font-calibri font-bold text-gray-500 w-fit mb-4 group-hover/edu:bg-[#52898a] group-hover/edu:text-white group-hover/edu:border-[#52898a] transition-colors duration-300">Jan 2015 - Dec 2018</div>
+                        <p class="font-calibri text-[#506060] text-[15px] leading-relaxed mt-auto">78% for electrical and electronic engineering with Distinctions for 90% of modules.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="reveal-elem">
+                <h2 class="font-cursive text-6xl text-[#52898a] text-center mb-16 drop-shadow-sm mt-12 hover:scale-105 transition-transform cursor-default">Certifications</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-10">
+                <!-- Cert 1 -->
+                <div class="reveal-elem" style="transition-delay: 0ms;">
+                    <div class="group bg-white p-6 pb-8 shadow-lg hover:shadow-[0_20px_50px_rgba(82,137,138,0.15)] transition-all duration-500 transform rotate-1 hover:rotate-0 hover:scale-[1.03] hover:-translate-y-3 border border-gray-100 rounded-sm relative z-0 hover:z-10 cursor-default text-left group/cert">
+                        <h4 class="font-calibri text-xl font-bold text-[#2f3e3e] mb-5 border-b border-gray-200 pb-3 flex items-center gap-2 group-hover/cert:border-[#52898a] transition-colors">
+                            <i data-lucide="layers" class="w-5 h-5 text-[#52898a] group-hover/cert:scale-125 transition-transform duration-300"></i> Microsoft
+                        </h4>
+                        <ul class="space-y-4">
+                            <li class="font-calibri text-[#506060] text-[15px] flex items-start gap-3 hover:text-[#52898a] hover:translate-x-2 transition-all duration-300 cursor-pointer"><span class="text-[#52898a] mt-1 text-lg leading-none">•</span> Azure DevOps (AZ-400)</li>
+                            <li class="font-calibri text-[#506060] text-[15px] flex items-start gap-3 hover:text-[#52898a] hover:translate-x-2 transition-all duration-300 cursor-pointer"><span class="text-[#52898a] mt-1 text-lg leading-none">•</span> Platform Expert (PL-600)</li>
+                            <li class="font-calibri text-[#506060] text-[15px] flex items-start gap-3 hover:text-[#52898a] hover:translate-x-2 transition-all duration-300 cursor-pointer"><span class="text-[#52898a] mt-1 text-lg leading-none">•</span> Azure Administrator (AZ-104)</li>
+                            <li class="font-calibri text-[#506060] text-[15px] flex items-start gap-3 hover:text-[#52898a] hover:translate-x-2 transition-all duration-300 cursor-pointer"><span class="text-[#52898a] mt-1 text-lg leading-none">•</span> Azure Fundamentals (AZ-900)</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Cert 2 -->
+                <div class="reveal-elem" style="transition-delay: 100ms;">
+                    <div class="group bg-white p-6 pb-8 shadow-lg hover:shadow-[0_20px_50px_rgba(82,137,138,0.15)] transition-all duration-500 transform -rotate-1 hover:rotate-0 hover:scale-[1.03] hover:-translate-y-3 border border-gray-100 rounded-sm relative z-0 hover:z-10 cursor-default text-left group/cert">
+                        <h4 class="font-calibri text-xl font-bold text-[#2f3e3e] mb-5 border-b border-gray-200 pb-3 flex items-center gap-2 group-hover/cert:border-[#52898a] transition-colors">
+                            <i data-lucide="layers" class="w-5 h-5 text-[#52898a] group-hover/cert:scale-125 transition-transform duration-300"></i> Google Cloud
+                        </h4>
+                        <ul class="space-y-4">
+                            <li class="font-calibri text-[#506060] text-[15px] flex items-start gap-3 hover:text-[#52898a] hover:translate-x-2 transition-all duration-300 cursor-pointer"><span class="text-[#52898a] mt-1 text-lg leading-none">•</span> Cloud Digital Leader</li>
+                            <li class="font-calibri text-[#506060] text-[15px] flex items-start gap-3 hover:text-[#52898a] hover:translate-x-2 transition-all duration-300 cursor-pointer"><span class="text-[#52898a] mt-1 text-lg leading-none">•</span> Gen AI Leader</li>
+                            <li class="font-calibri text-[#506060] text-[15px] flex items-start gap-3 hover:text-[#52898a] hover:translate-x-2 transition-all duration-300 cursor-pointer"><span class="text-[#52898a] mt-1 text-lg leading-none">•</span> Associate Cloud Engineer</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Cert 3 -->
+                <div class="reveal-elem" style="transition-delay: 200ms;">
+                    <div class="group bg-white p-6 pb-8 shadow-lg hover:shadow-[0_20px_50px_rgba(82,137,138,0.15)] transition-all duration-500 transform rotate-1 hover:rotate-0 hover:scale-[1.03] hover:-translate-y-3 border border-gray-100 rounded-sm relative z-0 hover:z-10 cursor-default text-left group/cert">
+                        <h4 class="font-calibri text-xl font-bold text-[#2f3e3e] mb-5 border-b border-gray-200 pb-3 flex items-center gap-2 group-hover/cert:border-[#52898a] transition-colors">
+                            <i data-lucide="layers" class="w-5 h-5 text-[#52898a] group-hover/cert:scale-125 transition-transform duration-300"></i> Executive Education
+                        </h4>
+                        <ul class="space-y-4">
+                            <li class="font-calibri text-[#506060] text-[15px] flex items-start gap-3 hover:text-[#52898a] hover:translate-x-2 transition-all duration-300 cursor-pointer"><span class="text-[#52898a] mt-1 text-lg leading-none">•</span> Stanford: D&I, Storytelling, Coaching</li>
+                            <li class="font-calibri text-[#506060] text-[15px] flex items-start gap-3 hover:text-[#52898a] hover:translate-x-2 transition-all duration-300 cursor-pointer"><span class="text-[#52898a] mt-1 text-lg leading-none">•</span> Warwick: Global Online MBA</li>
+                            <li class="font-calibri text-[#506060] text-[15px] flex items-start gap-3 hover:text-[#52898a] hover:translate-x-2 transition-all duration-300 cursor-pointer"><span class="text-[#52898a] mt-1 text-lg leading-none">•</span> GIBS: Strategic Leadership</li>
+                            <li class="font-calibri text-[#506060] text-[15px] flex items-start gap-3 hover:text-[#52898a] hover:translate-x-2 transition-all duration-300 cursor-pointer"><span class="text-[#52898a] mt-1 text-lg leading-none">•</span> UCT: Product Mgmt, Business Dev</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VOLUNTEER & AWARDS -->
+    <section class="py-24 px-6 md:px-12 bg-white">
+        <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-16 border-t border-gray-100 pt-16">
+            
+            <div class="flex flex-col gap-10">
+                <div class="reveal-elem">
+                    <h2 class="font-cursive text-5xl text-[#52898a] mb-8 flex items-center gap-3 drop-shadow-sm hover:translate-x-2 transition-transform cursor-default">
+                        <i data-lucide="award" class="w-8 h-8 hover:scale-125 hover:rotate-12 transition-transform"></i> Honours & Awards
+                    </h2>
+                    <div class="space-y-6">
+                        <div class="bg-[#f6eceb] p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-lg hover:scale-[1.02] hover:-translate-y-1 hover:border-[#52898a]/30 transition-all duration-300 cursor-pointer group">
+                            <h3 class="font-calibri text-lg font-bold text-[#2f3e3e] mb-2 group-hover:text-[#52898a] transition-colors">Liquid Digital Challenge Winner</h3>
+                            <p class="font-calibri text-[15px] text-gray-500">Placed 1st among 5,000 entrants.</p>
+                        </div>
+                        <div class="bg-[#f6eceb] p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-lg hover:scale-[1.02] hover:-translate-y-1 hover:border-[#52898a]/30 transition-all duration-300 cursor-pointer group">
+                            <h3 class="font-calibri text-lg font-bold text-[#2f3e3e] mb-2 group-hover:text-[#52898a] transition-colors">IEEE Young Publisher Finalist</h3>
+                            <p class="font-calibri text-[15px] text-gray-500">Most Promising Young publisher in SA.</p>
+                        </div>
+                        <div class="bg-[#f6eceb] p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-lg hover:scale-[1.02] hover:-translate-y-1 hover:border-[#52898a]/30 transition-all duration-300 cursor-pointer group">
+                            <h3 class="font-calibri text-lg font-bold text-[#2f3e3e] mb-2 group-hover:text-[#52898a] transition-colors">Real Change Leadership</h3>
+                            <p class="font-calibri text-[15px] text-gray-500">Leadership Expedition to Silicon Valley.</p>
+                        </div>
+                        <div class="bg-[#f6eceb] p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-lg hover:scale-[1.02] hover:-translate-y-1 hover:border-[#52898a]/30 transition-all duration-300 cursor-pointer group">
+                            <h3 class="font-calibri text-lg font-bold text-[#2f3e3e] mb-2 group-hover:text-[#52898a] transition-colors">Top Achiever Award</h3>
+                            <p class="font-calibri text-[15px] text-gray-500">University of Cape Town (UCT) courses.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flex flex-col gap-10">
+                <div class="reveal-elem">
+                    <h2 class="font-cursive text-5xl text-[#52898a] mb-8 flex items-center gap-3 drop-shadow-sm hover:translate-x-2 transition-transform cursor-default">
+                        <i data-lucide="users" class="w-8 h-8 hover:scale-125 hover:-rotate-12 transition-transform"></i> Volunteer Experience
+                    </h2>
+                    <div class="grid sm:grid-cols-2 gap-6">
+                        <div class="bg-[#f6eceb] p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-lg hover:scale-[1.05] hover:-translate-y-2 hover:border-[#52898a]/30 transition-all duration-300 cursor-pointer group">
+                            <h3 class="font-calibri text-lg font-bold text-[#2f3e3e] mb-2 leading-tight group-hover:text-[#52898a] transition-colors">Course Facilitator</h3>
+                            <p class="font-calibri text-sm text-[#52898a] font-bold group-hover:translate-x-1 transition-transform">Think2Thrive (2025 - present)</p>
+                        </div>
+                        <div class="bg-[#f6eceb] p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-lg hover:scale-[1.05] hover:-translate-y-2 hover:border-[#52898a]/30 transition-all duration-300 cursor-pointer group">
+                            <h3 class="font-calibri text-lg font-bold text-[#2f3e3e] mb-2 leading-tight group-hover:text-[#52898a] transition-colors">Head Tutor & External Examiner</h3>
+                            <p class="font-calibri text-sm text-[#52898a] font-bold group-hover:translate-x-1 transition-transform">University of Johannesburg (2018 - present)</p>
+                        </div>
+                        <div class="bg-[#f6eceb] p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-lg hover:scale-[1.05] hover:-translate-y-2 hover:border-[#52898a]/30 transition-all duration-300 cursor-pointer group">
+                            <h3 class="font-calibri text-lg font-bold text-[#2f3e3e] mb-2 leading-tight group-hover:text-[#52898a] transition-colors">Executive Member</h3>
+                            <p class="font-calibri text-sm text-[#52898a] font-bold group-hover:translate-x-1 transition-transform">IoT Council of South Africa (2020-2021)</p>
+                        </div>
+                        <div class="bg-[#f6eceb] p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-lg hover:scale-[1.05] hover:-translate-y-2 hover:border-[#52898a]/30 transition-all duration-300 cursor-pointer group">
+                            <h3 class="font-calibri text-lg font-bold text-[#2f3e3e] mb-2 leading-tight group-hover:text-[#52898a] transition-colors">Member</h3>
+                            <p class="font-calibri text-sm text-[#52898a] font-bold group-hover:translate-x-1 transition-transform">Google Cloud product community (2022 - present)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- RECOMMENDATIONS (Pinterest / Masonry Style Grid) -->
+    <section id="recommendations" class="py-24 px-6 md:px-12 bg-[#f6eceb]">
+        <div class="max-w-7xl mx-auto">
+            <div class="reveal-elem text-center mb-16">
+                <h2 class="font-cursive text-6xl md:text-7xl text-[#52898a] drop-shadow-sm hover:scale-105 transition-transform cursor-default inline-flex items-center gap-4">
+                    <i data-lucide="quote" class="w-12 h-12"></i> Recommendations
+                </h2>
+                <p class="font-calibri text-[#506060] text-lg mt-4 max-w-2xl mx-auto">
+                    The stories and impact shared by the incredible people I've had the privilege to work with, mentor, and be mentored by.
+                </p>
+            </div>
+
+            <!-- CSS Columns for Masonry effect -->
+            <div class="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8">
+                
+                <!-- Recommendation 1 -->
+                <div class="reveal-elem break-inside-avoid">
+                    <div class="group bg-white p-8 shadow-lg hover:shadow-[0_20px_50px_rgba(82,137,138,0.15)] transition-all duration-500 border border-gray-100 rounded-xl relative z-0 hover:z-10 hover:-translate-y-2">
+                        <i data-lucide="quote" class="w-8 h-8 text-[#52898a]/30 mb-4 group-hover:text-[#52898a] group-hover:scale-110 transition-all duration-500"></i>
+                        <p class="font-calibri text-[#2f3e3e] text-[15px] italic mb-6 leading-relaxed">
+                            "During my tenure as CEO of Liquid C2, I consistently valued Prasheen's ability to turn strategy into execution. He brought strong process discipline, built practical automation to remove friction, and handled commercial and pricing discussions with clarity and ownership. Prasheen is detail‑oriented without slowing momentum, highly coachable, and genuinely committed to continuous improvement. He has great energy and is a fast learner. He operates comfortably from executive discussions down to delivery details. I’d recommend him without hesitation."
+                        </p>
+                        <div class="border-t border-gray-100 pt-5 group-hover:border-[#52898a]/20 transition-colors">
+                            <h4 class="font-calibri font-bold text-[#52898a] text-lg">David Behr</h4>
+                            <p class="font-calibri text-xs text-gray-500 mt-1">Group Chief Enterprise Business Officer, MTN Group</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recommendation 2 -->
+                <div class="reveal-elem break-inside-avoid">
+                    <div class="group bg-white p-8 shadow-lg hover:shadow-[0_20px_50px_rgba(82,137,138,0.15)] transition-all duration-500 border border-gray-100 rounded-xl relative z-0 hover:z-10 hover:-translate-y-2">
+                        <i data-lucide="quote" class="w-8 h-8 text-[#52898a]/30 mb-4 group-hover:text-[#52898a] group-hover:scale-110 transition-all duration-500"></i>
+                        <p class="font-calibri text-[#2f3e3e] text-[15px] italic mb-6 leading-relaxed">
+                            "When Prasheen Dehda first walked into the offices of Liquid Technologies in 2019, he arrived as a young graduate stepping into the role of Product Manager... Those who worked with him quickly noticed his dedication. Prasheen was often one of the first people in the office each morning... What stood out most about Prasheen was his attitude. Instead of seeing challenges as obstacles, he treated them as lessons. His eagerness to absorb knowledge and his willingness to put in the effort made him someone colleagues respected and enjoyed working with."
+                        </p>
+                        <div class="border-t border-gray-100 pt-5 group-hover:border-[#52898a]/20 transition-colors">
+                            <h4 class="font-calibri font-bold text-[#52898a] text-lg">Avesh Subbiah</h4>
+                            <p class="font-calibri text-xs text-gray-500 mt-1">Data Analytics</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recommendation 3 -->
+                <div class="reveal-elem break-inside-avoid">
+                    <div class="group bg-white p-8 shadow-lg hover:shadow-[0_20px_50px_rgba(82,137,138,0.15)] transition-all duration-500 border border-gray-100 rounded-xl relative z-0 hover:z-10 hover:-translate-y-2">
+                        <i data-lucide="quote" class="w-8 h-8 text-[#52898a]/30 mb-4 group-hover:text-[#52898a] group-hover:scale-110 transition-all duration-500"></i>
+                        <p class="font-calibri text-[#2f3e3e] text-[15px] italic mb-6 leading-relaxed">
+                            "I had the pleasure of working with Prasheen at Liquid Telecommunications. He had joined the team after University and from the onset he had distinguished himself through his curiosity and eagerness to achieve. He quickly grasped key business fundamentals and built his technical acumen. Prasheen is driven, reliable and is always sought feedback. I have no doubt Prasheen will continue to excel and create more Aha moments for his customers."
+                        </p>
+                        <div class="border-t border-gray-100 pt-5 group-hover:border-[#52898a]/20 transition-colors">
+                            <h4 class="font-calibri font-bold text-[#52898a] text-lg">Rash Ramkhelawon</h4>
+                            <p class="font-calibri text-xs text-gray-500 mt-1">Senior Consultant | Business Transformation & Automation | Cloud | IoT</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recommendation 4 -->
+                <div class="reveal-elem break-inside-avoid">
+                    <div class="group bg-white p-8 shadow-lg hover:shadow-[0_20px_50px_rgba(82,137,138,0.15)] transition-all duration-500 border border-gray-100 rounded-xl relative z-0 hover:z-10 hover:-translate-y-2">
+                        <i data-lucide="quote" class="w-8 h-8 text-[#52898a]/30 mb-4 group-hover:text-[#52898a] group-hover:scale-110 transition-all duration-500"></i>
+                        <p class="font-calibri text-[#2f3e3e] text-[15px] italic mb-6 leading-relaxed">
+                            "Prasheen was a stellar contributor and very willing to dive deeply into new areas of the business. He was instrumental in driving the managed services and then the Google suite of solutions across the Liquid Intelligent Technologies and Cloudmania group of companies. Prasheen was diligent in the work he produced and was a great self-starter who was motivated to drive success within the business. Would recruit again in a heartbeat."
+                        </p>
+                        <div class="border-t border-gray-100 pt-5 group-hover:border-[#52898a]/20 transition-colors">
+                            <h4 class="font-calibri font-bold text-[#52898a] text-lg">Winston Ritson</h4>
+                            <p class="font-calibri text-xs text-gray-500 mt-1">Scale Executive | Business Leadership | AI & Digital Transformation | COO | CEO</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recommendation 5 -->
+                <div class="reveal-elem break-inside-avoid">
+                    <div class="group bg-white p-8 shadow-lg hover:shadow-[0_20px_50px_rgba(82,137,138,0.15)] transition-all duration-500 border border-gray-100 rounded-xl relative z-0 hover:z-10 hover:-translate-y-2">
+                        <i data-lucide="quote" class="w-8 h-8 text-[#52898a]/30 mb-4 group-hover:text-[#52898a] group-hover:scale-110 transition-all duration-500"></i>
+                        <p class="font-calibri text-[#2f3e3e] text-[15px] italic mb-6 leading-relaxed">
+                            "Working with Prasheen Dehda through the Google Cloud Partner Program has been an absolute blast! Prasheen is the kind of colleague you dream of: knowledgeable, strategic, and an absolute legend. He led one of our most complex and strategic partnerships with so much grace... He's a true partner who makes every collaboration feel less like work and more like an adventure."
+                        </p>
+                        <div class="border-t border-gray-100 pt-5 group-hover:border-[#52898a]/20 transition-colors">
+                            <h4 class="font-calibri font-bold text-[#52898a] text-lg">Mpumi Hlomuka-Berman</h4>
+                            <p class="font-calibri text-xs text-gray-500 mt-1">Tech Keynote Speaker | Cloud Engineer @ Google Cloud Africa</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recommendation 6 -->
+                <div class="reveal-elem break-inside-avoid">
+                    <div class="group bg-white p-8 shadow-lg hover:shadow-[0_20px_50px_rgba(82,137,138,0.15)] transition-all duration-500 border border-gray-100 rounded-xl relative z-0 hover:z-10 hover:-translate-y-2">
+                        <i data-lucide="quote" class="w-8 h-8 text-[#52898a]/30 mb-4 group-hover:text-[#52898a] group-hover:scale-110 transition-all duration-500"></i>
+                        <p class="font-calibri text-[#2f3e3e] text-[15px] italic mb-6 leading-relaxed">
+                            "It has been a pleasure working with Prasheen over the last 5+ years, and it has been an absolute joy watching him grow professionally. His natural curiosity, diligence and analytical approach to work ensured that the results he produced were exemplary for an individual from a technical background. His quiet confidence in himself and his unwavering commitment to constantly improve... will ensure that he will be an asset to all teams."
+                        </p>
+                        <div class="border-t border-gray-100 pt-5 group-hover:border-[#52898a]/20 transition-colors">
+                            <h4 class="font-calibri font-bold text-[#52898a] text-lg">Angela Chandy</h4>
+                            <p class="font-calibri text-xs text-gray-500 mt-1">Executive Head: PR and Corporate Relations</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recommendation 7 -->
+                <div class="reveal-elem break-inside-avoid">
+                    <div class="group bg-white p-8 shadow-lg hover:shadow-[0_20px_50px_rgba(82,137,138,0.15)] transition-all duration-500 border border-gray-100 rounded-xl relative z-0 hover:z-10 hover:-translate-y-2">
+                        <i data-lucide="quote" class="w-8 h-8 text-[#52898a]/30 mb-4 group-hover:text-[#52898a] group-hover:scale-110 transition-all duration-500"></i>
+                        <p class="font-calibri text-[#2f3e3e] text-[15px] italic mb-6 leading-relaxed">
+                            "I had the pleasure of working under Prasheen Dehda... during my internship. He was an exceptional line manager and mentor, always willing to share his knowledge and guide me through challenging projects. He patiently helped me develop my skills in cloud architecture and solution design... His mentorship was pivotal in my growth, directly leading to my absorption as an Associate: Cloud Solutions Architect within the company."
+                        </p>
+                        <div class="border-t border-gray-100 pt-5 group-hover:border-[#52898a]/20 transition-colors">
+                            <h4 class="font-calibri font-bold text-[#52898a] text-lg">Nkosiphendule Mdingi</h4>
+                            <p class="font-calibri text-xs text-gray-500 mt-1">3x Google Cloud Certified | Google Partner Technical Specialist</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recommendation 8 -->
+                <div class="reveal-elem break-inside-avoid">
+                    <div class="group bg-white p-8 shadow-lg hover:shadow-[0_20px_50px_rgba(82,137,138,0.15)] transition-all duration-500 border border-gray-100 rounded-xl relative z-0 hover:z-10 hover:-translate-y-2">
+                        <i data-lucide="quote" class="w-8 h-8 text-[#52898a]/30 mb-4 group-hover:text-[#52898a] group-hover:scale-110 transition-all duration-500"></i>
+                        <p class="font-calibri text-[#2f3e3e] text-[15px] italic mb-6 leading-relaxed">
+                            "I had the pleasure of starting my journey at Liquid C2 as an intern with Prasheen playing a key role in my development... He was instrumental in helping me find my footing, always approachable, patient, and willing to walk me through concepts—no matter how simple my questions might have seemed. His ability to explain concepts with compelling analogies made learning both easier and more engaging. Beyond his technical expertise, what stood out most was his leadership and genuine willingness to support others."
+                        </p>
+                        <div class="border-t border-gray-100 pt-5 group-hover:border-[#52898a]/20 transition-colors">
+                            <h4 class="font-calibri font-bold text-[#52898a] text-lg">Tshiamo Masegela</h4>
+                            <p class="font-calibri text-xs text-gray-500 mt-1">Data | AI | Cloud</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recommendation 9 -->
+                <div class="reveal-elem break-inside-avoid">
+                    <div class="group bg-white p-8 shadow-lg hover:shadow-[0_20px_50px_rgba(82,137,138,0.15)] transition-all duration-500 border border-gray-100 rounded-xl relative z-0 hover:z-10 hover:-translate-y-2">
+                        <i data-lucide="quote" class="w-8 h-8 text-[#52898a]/30 mb-4 group-hover:text-[#52898a] group-hover:scale-110 transition-all duration-500"></i>
+                        <p class="font-calibri text-[#2f3e3e] text-[15px] italic mb-6 leading-relaxed">
+                            "I would highly recommend Prasheen - he is a rare blend of sharp strategic and commercial acumen, combined with exceptional attention to detail and strong technical chops. He's also a pleasure to work with and can build trust and strong working relationships across multiple levels of an organisation from C-Level to junior staff with ease, whilst approaching complex problems with grace, humility and a knack for just getting things done... Prasheen would be a superpower for any team."
+                        </p>
+                        <div class="border-t border-gray-100 pt-5 group-hover:border-[#52898a]/20 transition-colors">
+                            <h4 class="font-calibri font-bold text-[#52898a] text-lg">Zunair Akbar</h4>
+                            <p class="font-calibri text-xs text-gray-500 mt-1">Google Cloud GTM, Strategic Partnerships</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recommendation 10 -->
+                <div class="reveal-elem break-inside-avoid">
+                    <div class="group bg-white p-8 shadow-lg hover:shadow-[0_20px_50px_rgba(82,137,138,0.15)] transition-all duration-500 border border-gray-100 rounded-xl relative z-0 hover:z-10 hover:-translate-y-2">
+                        <i data-lucide="quote" class="w-8 h-8 text-[#52898a]/30 mb-4 group-hover:text-[#52898a] group-hover:scale-110 transition-all duration-500"></i>
+                        <p class="font-calibri text-[#2f3e3e] text-[15px] italic mb-6 leading-relaxed">
+                            "Some people leave an impression. Prasheen leaves a legacy!... Of all the individuals I’ve mentored over the years, he stands above the rest. Not just because he’s whip smart. Not just because he’s insatiably curious, grounded, and humble. But because he shows up. Fully. Every time. He brings structure to curiosity, and rigour to ambition... Prasheen comes with my highest and most wholehearted recommendation. If you get the opportunity to work with him don’t hesitate. Say yes."
+                        </p>
+                        <div class="border-t border-gray-100 pt-5 group-hover:border-[#52898a]/20 transition-colors">
+                            <h4 class="font-calibri font-bold text-[#52898a] text-lg">Kree Govender</h4>
+                            <p class="font-calibri text-xs text-gray-500 mt-1">SMB Canada Leader @ Microsoft | Ai evangelist | Keynote speaker</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recommendation 11 -->
+                <div class="reveal-elem break-inside-avoid">
+                    <div class="group bg-white p-8 shadow-lg hover:shadow-[0_20px_50px_rgba(82,137,138,0.15)] transition-all duration-500 border border-gray-100 rounded-xl relative z-0 hover:z-10 hover:-translate-y-2">
+                        <i data-lucide="quote" class="w-8 h-8 text-[#52898a]/30 mb-4 group-hover:text-[#52898a] group-hover:scale-110 transition-all duration-500"></i>
+                        <p class="font-calibri text-[#2f3e3e] text-[15px] italic mb-6 leading-relaxed">
+                            "Prasheen is a truly dynamic individual. In the two years I've had the pleasure of working alongside him, I've consistently been impressed by his sharp intellect, keen observation skills, and unwavering professionalism. He's incredibly action-oriented and approaches every challenge with a pleasant and optimistic demeanor. I've witnessed him navigate complex, high-stakes meetings with seasoned executives at a moment's notice, always handling them with remarkable poise. You can absolutely count on Prasheen to deliver..."
+                        </p>
+                        <div class="border-t border-gray-100 pt-5 group-hover:border-[#52898a]/20 transition-colors">
+                            <h4 class="font-calibri font-bold text-[#52898a] text-lg">Danie Gordon</h4>
+                            <p class="font-calibri text-xs text-gray-500 mt-1">Google Cloud Africa</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER & CONTACT -->
+    <footer id="contact" class="bg-[#52898a] text-white pt-24 pb-12 px-6 md:px-12 font-calibri">
+        <div class="reveal-elem max-w-4xl mx-auto flex flex-col items-center text-center gap-8 mb-16 border-b border-white/20 pb-16">
+            <h2 class="font-cursive text-6xl md:text-7xl mb-2 leading-tight drop-shadow-sm hover:scale-[1.02] transition-transform duration-500 cursor-default">Let's connect & <br/> grow together.</h2>
+            <p class="text-lg text-white/90 mb-6 max-w-md leading-relaxed hover:text-white transition-colors cursor-default">
+                I am always open to discussing cloud strategies, partner ecosystems, or mentoring opportunities.
+            </p>
+            <div class="flex justify-center gap-5">
+                <a href="mailto:prasheen.dehda01@gmail.com" class="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center hover:bg-white hover:text-[#52898a] hover:scale-110 hover:shadow-xl active:scale-95 transition-all">
+                    <i data-lucide="mail" class="w-7 h-7"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="max-w-6xl mx-auto text-center text-sm font-bold text-white/70">
+            <p class="hover:text-white transition-colors cursor-default">&copy; 2026 Prasheen Dehda. Designed with empathy.</p>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS FOR INTERACTIVITY -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // 1. Scroll Reveal Logic
+        document.addEventListener("DOMContentLoaded", () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+
+            document.querySelectorAll('.reveal-elem').forEach(el => observer.observe(el));
+        });
+
+        // 2. Generate SVG Radar Chart Points
+        document.addEventListener("DOMContentLoaded", () => {
+            const cx = 200, cy = 200, r = 130;
+            const angles = [-Math.PI/2, -Math.PI/6, Math.PI/6, Math.PI/2, 5*Math.PI/6, -5*Math.PI/6];
+            const scores = [9.5, 8.5, 9.5, 9, 9, 8.5]; 
+            
+            const getPath = (values) => values.map((val, i) => `${cx + (val / 10) * r * Math.cos(angles[i])},${cy + (val / 10) * r * Math.sin(angles[i])}`).join(' ');
+            
+            let svgContent = '';
+            
+            // Grid Levels
+            [2, 4, 6, 8, 10].forEach(val => {
+                const path = getPath(Array(6).fill(val));
+                svgContent += `<polygon points="${path}" fill="none" stroke="#52898a" stroke-width="1" stroke-dasharray="4 4" class="opacity-30" />`;
+            });
+            
+            // Axes
+            angles.forEach(angle => {
+                const x2 = cx + r * Math.cos(angle);
+                const y2 = cy + r * Math.sin(angle);
+                svgContent += `<line x1="${cx}" y1="${cy}" x2="${x2}" y2="${y2}" stroke="#52898a" stroke-width="1" class="opacity-30" />`;
+            });
+            
+            // Main Polygon
+            const dataPath = getPath(scores);
+            svgContent += `<polygon points="${dataPath}" fill="#52898a" stroke="#2f3e3e" stroke-width="3.5" class="animate-radar origin-center transition-all duration-1000 group-hover/radar:fill-opacity-50 group-hover/radar:stroke-[#52898a] group-hover/radar:stroke-[5px] cursor-crosshair" />`;
+            
+            // Labels
+            const labels = [
+                { text: "High Impact Revenue Generation", x: cx, y: cy - r - 20, align: "middle" },
+                { text: "Ecosystem Orchestration", x: cx + r + 50, y: cy - r/2, align: "middle" },
+                { text: "Trusted Advisor", x: cx + r + 40, y: cy + r/2 + 10, align: "start" },
+                { text: "Servant Leadership", x: cx, y: cy + r + 30, align: "middle" },
+                { text: "Thought Leadership & Growth Mindset", x: cx - r - 50, y: cy + r/2 + 10, align: "middle" },
+                { text: "Strategic Account Execution", x: cx - r - 50, y: cy - r/2, align: "middle" }
+            ];
+
+            labels.forEach(lbl => {
+                const words = lbl.text.split(' ');
+                const isMulti = words.length > 2;
+                
+                svgContent += `<text x="${lbl.x}" y="${lbl.y}" text-anchor="${lbl.align}" class="font-google-sans-medium text-[11px] sm:text-[13px] fill-[#2f3e3e] font-bold transition-transform duration-300">`;
+                
+                if (isMulti) {
+                    const firstHalf = words.slice(0, Math.ceil(words.length/2)).join(' ');
+                    const secondHalf = words.slice(Math.ceil(words.length/2)).join(' ');
+                    svgContent += `<tspan x="${lbl.x}" dy="-0.6em">${firstHalf}</tspan><tspan x="${lbl.x}" dy="1.2em">${secondHalf}</tspan>`;
+                } else {
+                    svgContent += lbl.text;
+                }
+                svgContent += `</text>`;
+            });
+
+            const radarSvg = document.getElementById('radar-svg');
+            if(radarSvg) radarSvg.innerHTML = svgContent;
+        });
+    </script>
+</body>
+</html>
